@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import firebase from './firebase';
+import { useState, useEffect } from 'react';
+import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
 
 function App() {
+  const [inventoryList, setInventoryList] = useState([]);
+  useEffect (() => {
+    const database = getDatabase(firebase)
+    const dbRef = ref(database)
+    onValue(dbRef, (response) => {
+      const newState = [];
+      const data = response.val();
+      console.log(data);
+      for (let itemKey in data) {
+        newState.push(data[itemKey]);
+        // console.log(data[itemKey]);
+      }
+      setInventoryList(newState);
+      // console.log(newState);
+    });
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Two Birds One Stone Foods</h1>
+      <ul>
+        {inventoryList.map( (inventoryItem, index) => {
+          // console.log(inventoryItem);
+          return (
+            <li key={index}>
+              <p>Product: #{inventoryItem.ProdId}</p>
+              <p>Type: {inventoryItem.Type}</p>
+              <p>Product Name: {inventoryItem.ProductName}</p>
+              <p>Description: {inventoryItem.Description}</p>
+              <p>Volume/Weight: {inventoryItem.Volume}</p>
+              <p>Quantity: {inventoryItem.Quantity}</p>
+              <p>Price: ${inventoryItem.Price}</p>
+            </li>
+          )
+        })}
+      </ul>
     </div>
-  );
+  )
 }
+
 
 export default App;
