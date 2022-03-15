@@ -1,6 +1,9 @@
 import firebase from './firebase';
 import { useState, useEffect } from 'react';
 import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
+import './App.css'
+import Header from './Header.js';
+import AddItemForm from './AddForm.js';
 
 function App() {
   const [inventoryList, setInventoryList] = useState([]);
@@ -42,49 +45,42 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Two Birds One Stone Foods</h1>
-      <ul>
-        {inventoryList.map( (inventoryItem, index) => {
-          // console.log(inventoryItem);
-          return (
-            <li key={index}>
-              <p>Product: #{inventoryItem.ProdId}</p>
-              <p>Type: {inventoryItem.Type}</p>
-              <p>Product Name: {inventoryItem.ProductName}</p>
-              <p>Description: {inventoryItem.Description}</p>
-              <p>Volume/Weight: {inventoryItem.Volume}</p>
-              <p>Quantity: {inventoryItem.Quantity}</p>
-              <p>Price: ${inventoryItem.Price}</p>
-            </li>
-          )
-        })}
-      </ul>
-      {/* Form --> add new products to inventory */}
-      <div>
-        <h2>Add a new item to your inventory</h2>
-        <form action="submit">
-          <label htmlFor="ProdId">Item: #</label>
-          <input
-            type="text"
-            id="ProdId"
-            onChange={handleInputChange}
-            value={userInput}
-          />
-
-          {/* <label htmlFor="ProductName">Item Name: </label>
-          <input 
-            type="text" 
-            id="ProductName" 
-            onChange={handleInputChange} 
-            value={userInput}
-          /> */}
-
-           
-          <button onClick={handleSubmit}>Add Product</button>
-        </form>
+    <div className='container'>
+      <div className="wrapper">
+        <Header />
+        {/* Display current inventory listing on screen */}
+        <div className='invList'>
+          <h3>Current Inventory</h3>
+          <ul>
+            {inventoryList.map( (inventoryItem, index) => {
+              // console.log(inventoryItem);
+              return (
+                <li key={index}>
+                  <div className='smallDetails'>
+                    <p>Item: #{inventoryItem.itemId}</p>
+                    <p>Type: {inventoryItem.Type}</p>
+                    <p>Vol./Wt.: {inventoryItem.Volume}</p>
+                    <p>Quantity: {inventoryItem.Quantity}</p>
+                    <p>Price: ${inventoryItem.Price}</p>
+                  </div>
+                  <div className='largeDetails'>
+                    <p>Item Name: {inventoryItem.itemName}</p>
+                    <p>Description: {inventoryItem.Description}</p>
+                  </div>
+                  <hr></hr>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+        {/* Display Add Item to Inventory Form */}
+        <div className='invAdd'>
+          <AddItemForm />
+        </div>
       </div>
+      {/* END: Wrapper */}
     </div>
+    // END: Container
   )
 }
 
