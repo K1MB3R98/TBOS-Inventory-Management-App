@@ -6,7 +6,7 @@ function Header() {
         <section className='header'>
             <div className='logoTitle'>
                 <div className='logo'>
-                    <img src={tbosLogo} />
+                    <img src={tbosLogo} alt="Two Birds One Stone Foods logo." />
                 </div>
                 <div className="titles">
                     <h1>Two Birds One Stone Foods</h1>
