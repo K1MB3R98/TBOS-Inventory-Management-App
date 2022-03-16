@@ -2,8 +2,8 @@
 
 body{
     /* background: #2c3e50;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2c3e50, #8798a3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2c3e50, #8798a3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #2c4933, #86a58e);  /* older Chrome and Safari */
+    background: linear-gradient(to right, #223126, #86a58e);
     color: antiquewhite;
 }
 
@@ -28,7 +28,7 @@ h3 {
 
 .invList {
     width: 60%;
-    background-color: rgba(15, 32, 14, 0.966);
+    background-color: rgba(240, 248, 255, 0.075);
     padding: 25px 0;
 }
 
@@ -51,23 +51,23 @@ h3 {
 }
 
 hr {
-    border: 1px solid rgba(149, 164, 177, 0.445);
+    border: 1px solid rgba(127, 153, 139, 0.445);
     width: 70%;
     margin: 50px auto;
 }
 
 /* Container Styles */
-.container {
+/* .container { */
     /* position: fixed; */
-    background-image: url(./assets/backgroundImg2.png);
+    /* background-image: url(./assets/backgroundImg2.png);
     background-repeat: no-repeat;
     width: 100%;
     height: 100vh;
     background-size: cover;
-    background-position: center;
+    background-position: center; */
       /* -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
     /* filter: blur(5px); */
-}
+/* } */
 
 /* Header Component Styles */
 
@@ -89,13 +89,15 @@ img {
     width: 200px;
     height: auto;
     margin: 0 100px 0 0;
+    border-radius: 15%;
+    box-shadow: 5px 5px 15px rgb(32, 32, 32);
 }
 
 
 /* Add Item Form Styles */
 form{
     position: fixed;
-    top: 275px;
+    top: 265px;
     left: 60%;
     background-color: rgba(240, 248, 255, 0.075);
     border-radius: 5px;

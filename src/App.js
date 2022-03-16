@@ -7,7 +7,7 @@ import AddItemForm from './AddForm.js';
 
 function App() {
   const [inventoryList, setInventoryList] = useState([]);
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState([]);
 
   useEffect (() => {
     const database = getDatabase(firebase)
@@ -15,33 +15,35 @@ function App() {
     onValue(dbRef, (response) => {
       const newState = [];
       const data = response.val();
-      // console.log(data);
       for (let itemKey in data) {
-        newState.push(data[itemKey]);
-        // console.log(data[itemKey]);
+        newState.push({key: itemKey, inventoryItem: data[itemKey]});
       }
       setInventoryList(newState);
-      // console.log(newState);
     });
   }, []);
 
-  // Update state with userInput from form when the "Submit" button is pressed
+  // Adding a New Item: Update state with userInput from form when the "Submit" button is pressed
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   }
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // Make connection to database
     const database = getDatabase(firebase);
     const dbRef = ref(database);
-
     // Push userInput contents into database
     push(dbRef, userInput);
-
     // Reset state
     setUserInput('');
+  }
+
+  // Removing an Item: Update state with userInput from form when the "Submit" button is pressed
+  const handleRemoveItem = (itemId) => {
+    // reference the item's specific node
+    const database = getDatabase(firebase);
+    const dbRef = ref(database, `${itemId}`);
+    // remove the node from the database
+    remove(dbRef);
   }
 
   return (
@@ -52,27 +54,28 @@ function App() {
         <div className='invList'>
           <h3>Current Inventory</h3>
           <ul>
-            {inventoryList.map( (inventoryItem, index) => {
-              // console.log(inventoryItem);
+            {inventoryList.map( (item) => {
               return (
-                <li key={index}>
+                <li key={item.key}>
                   <div className='smallDetails'>
-                    <p>Item: #{inventoryItem.itemId}</p>
-                    <p>Type: {inventoryItem.Type}</p>
-                    <p>Vol./Wt.: {inventoryItem.Volume}</p>
-                    <p>Quantity: {inventoryItem.Quantity}</p>
-                    <p>Price: ${inventoryItem.Price}</p>
+                    <p>Item: #{item.inventoryItem.itemId}</p>
+                    <p>Type: {item.inventoryItem.Type}</p>
+                    <p>Vol./Wt.: {item.inventoryItem.Volume}</p>
+                    <p>Quantity: {item.inventoryItem.Quantity}</p>
+                    <p>Price: ${item.inventoryItem.Price}</p>
                   </div>
                   <div className='largeDetails'>
-                    <p>Item Name: {inventoryItem.itemName}</p>
-                    <p>Description: {inventoryItem.Description}</p>
+                    <p>Item Name: {item.inventoryItem.itemName}</p>
+                    <p>Description: {item.inventoryItem.Description}</p>
                   </div>
+                  <button onClick={() => handleRemoveItem(item.key)}>Remove from Inventory</button>
                   <hr></hr>
                 </li>
               )
             })}
           </ul>
         </div>
+
         {/* Display Add Item to Inventory Form */}
         <div className='invAdd'>
           <AddItemForm />
