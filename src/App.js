@@ -22,20 +22,6 @@ function App() {
     });
   }, []);
 
-  // Adding a New Item: Update state with userInput from form when the "Submit" button is pressed
-  const handleInputChange = (event) => {
-    setUserInput(event.target.value);
-  }
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Make connection to database
-    const database = getDatabase(firebase);
-    const dbRef = ref(database);
-    // Push userInput contents into database
-    push(dbRef, userInput);
-    // Reset state
-    setUserInput('');
-  }
 
   // Removing an Item: Update state with userInput from form when the "Submit" button is pressed
   const handleRemoveItem = (itemId) => {
