@@ -1,13 +1,12 @@
 import firebase from './firebase';
 import { useState, useEffect } from 'react';
-import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
+import { getDatabase, ref, onValue, remove } from 'firebase/database';
 import './App.css'
 import Header from './Header.js';
 import AddItemForm from './AddForm.js';
 
 function App() {
   const [inventoryList, setInventoryList] = useState([]);
-  const [userInput, setUserInput] = useState([]);
 
   useEffect (() => {
     const database = getDatabase(firebase)
