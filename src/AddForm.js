@@ -7,7 +7,6 @@ function AddItemForm() {
     const [Type, setType] = useState ('');
     const [itemName, setItemName] = useState('');
     const [Description, setDescription] = useState('');
-    const [Frozen, setFrozen] = useState('');
     const [Volume, setVolume] = useState('');
     const [Quantity, setQuantity] = useState('');
     const [Price, setPrice] = useState('');
