@@ -86,11 +86,6 @@ a {
     display: flex;
     /* justify-content: center; */
     margin-top: 25px;
-    border: 2px solid red;
-}
-
-.logo {
-        border: 2px solid green;
 }
 
 .header img {
@@ -98,11 +93,9 @@ a {
     height: auto;
     border-radius: 15%;
     box-shadow: 5px 5px 15px rgb(32, 32, 32);
-    border: 2px solid blue;
 }
 
 .titles {
-    border: 2px solid yellow;
     width: 100%;
 }
 
