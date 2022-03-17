@@ -36,6 +36,11 @@ function App() {
     <div className='container'>
       <div className='wrapper'>
         <Header />
+        {/* Display Add Item to Inventory Form */}
+        <div className='invAdd'>
+          <AddItemForm />
+        </div>
+
         {/* Display current inventory list on screen */}
         <div className='invList'>
           <h3>Current Inventory</h3>
@@ -74,11 +79,7 @@ function App() {
             })}
           </ul>
         </div>
-
-        {/* Display Add Item to Inventory Form */}
-        <div className='invAdd'>
-          <AddItemForm />
-        </div>
+        {/* END: invList */}
       </div>
       {/* END: wrapper */}
       <Footer />

@@ -4,7 +4,7 @@ import tbosLogo from './assets/tbos-logo.png';
 function Header() {
     return (
         <section className='header' id='header'>
-            <div className='logoTitle'>
+            <div className='logoTitles'>
                 <div className='logo'>
                     <img src={tbosLogo} alt="Two Birds One Stone Foods logo." />
                 </div>

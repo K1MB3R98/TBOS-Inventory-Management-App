@@ -55,8 +55,8 @@ function AddItemForm() {
     return (
         <form>
             <h3>Add New Item</h3>
-            <div className="formBody">
-                <div className="itemName">
+            <ul className="formBody">
+                <li className="itemName">
                     <label 
                         className="formLabel" 
                         htmlFor="itemName">
@@ -70,8 +70,8 @@ function AddItemForm() {
                         onChange={(event) => handleInputChange(event)} 
                         placeholder=""
                     />
-                </div>
-                <div className="description">
+                </li>
+                <li className="description">
                     <label  
                         htmlFor="Description">
                         Item Description: 
@@ -84,8 +84,8 @@ function AddItemForm() {
                         onChange={(event) => handleInputChange(event)} 
                         placeholder="">
                     </textarea>
-                </div>
-                <div className="type">
+                </li>
+                <li className="type">
                     <label 
                         className="formLabel" 
                         htmlFor="Type">
@@ -99,8 +99,8 @@ function AddItemForm() {
                         onChange={(event) => handleInputChange(event)} 
                         placeholder="e.g. Seasoning"
                     />
-                </div>
-                <div className="volume">
+                </li>
+                <li className="volume">
                     <label 
                     className="formLabel" 
                     htmlFor="Volume">
@@ -112,8 +112,8 @@ function AddItemForm() {
                     value={Volume} 
                     onChange={(event) => handleInputChange(event)} 
                     placeholder="e.g. 20g or 250ml"/>
-                </div>
-                <div className="quantity">
+                </li>
+                <li className="quantity">
                     <label 
                         className="formLabel" 
                         htmlFor="Quantity">
@@ -127,12 +127,12 @@ function AddItemForm() {
                         onChange={(event) => handleInputChange(event)} 
                         placeholder=""
                     />
-                </div>
-                <div className="price">
+                </li>
+                <li className="price">
                     <label 
                         className="formLabel" 
                         htmlFor="Price">
-                        Price: $
+                        Price:
                     </label>
                     <input 
                         className="formInput" 
@@ -140,10 +140,10 @@ function AddItemForm() {
                         id="Price" 
                         value={Price} 
                         onChange={(event) => handleInputChange(event)} 
-                        placeholder=""
+                        placeholder="$"
                     />
-                </div>
-            </div>
+                </li>
+            </ul>
 
             <div>
                 <button className='formButton' onClick={() => handleSubmit()} type="submit">Add Item</button>

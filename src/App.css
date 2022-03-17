@@ -29,6 +29,7 @@ html {
 h1 {
     font-family: 'Lobster', cursive;
     font-size: 5rem;
+    padding-top: 10px;
 }
 
 h2,
@@ -38,6 +39,7 @@ h3 {
 
 h2 {
     font-size: 2rem;
+    padding: 20px 0 40px 0px;
 }
 
 h3 {
@@ -80,20 +82,70 @@ a {
 
 
 /* Header Styles */
-.logoTitle {
-    position: relative;
-    margin: 25px 0 50px 50px;
+.logoTitles {
+    display: flex;
+    /* justify-content: center; */
+    margin-top: 25px;
+    border: 2px solid red;
 }
 
 .logo {
-    position: absolute;
+        border: 2px solid green;
 }
 
 .header img {
-    width: 175px;
+    width: 150px;
     height: auto;
     border-radius: 15%;
     box-shadow: 5px 5px 15px rgb(32, 32, 32);
+    border: 2px solid blue;
+}
+
+.titles {
+    border: 2px solid yellow;
+    width: 100%;
+}
+
+
+/* Add Item Form Styles */
+form {
+    position: fixed;
+    top: 240px;
+    left: 65%;
+    background-color: rgba(240, 248, 255, 0.075);
+    border-radius: 5px;
+    width: 30%;
+    margin: 20px auto;
+    padding: 25px;
+    color: mintcream;
+}
+
+.formBody {
+    text-align: left;
+}
+
+.formBody > * {
+    padding: 5px;
+}
+
+.formLabel {
+    padding-right: 10px;
+}
+
+.formInput {
+    width: 100%;
+    background-color: rgb(197, 228, 213);
+    border: 2px solid rgba(132, 148, 132, 0.486);
+}
+
+textarea {
+    resize: none;
+    height: 4rem;
+}
+
+.formButton {
+    width: 150px;
+    margin: 20px 0 0 35%;
 }
 
 
@@ -108,10 +160,6 @@ body{
 ul {
     list-style: none;
     text-align: left;
-}
-
-h1 {
-    padding: 20px 0 50px 0;
 }
 
 h1,
@@ -158,48 +206,6 @@ hr {
 }
 
 
-/* Add Item Form Styles */
-form {
-    position: fixed;
-    top: 285px;
-    left: 65%;
-    background-color: rgba(240, 248, 255, 0.075);
-    border-radius: 5px;
-    width: 30%;
-    margin: 20px auto;
-    padding: 25px;
-    color: mintcream;
-}
-
-.formBody {
-    text-align: left;
-}
-
-.formBody > * {
-    padding: 5px;
-}
-
-.formLabel {
-    padding-right: 10px;
-}
-
-.formInput {
-    width: 100%;
-    background-color: rgb(197, 228, 213);
-    border: 2px solid rgba(132, 148, 132, 0.486);
-}
-
-textarea {
-    resize: none;
-    height: 4rem;
-}
-
-.formButton {
-    width: 150px;
-    margin: 20px 0 0 35%;
-}
-
-
 /* Footer Styles */
 .footer {
     display: flex;
@@ -213,10 +219,9 @@ textarea {
 }
 
 .returnToTop i {
-    width: 1.8rem;
+    width: 50px;
     height: 1.8rem;
     padding: 8px 150px 0 150px;
-    background-color: none;
     color: lightgreen;
     font-size: 1.8rem;
     transition: 0.3s;
@@ -231,6 +236,7 @@ textarea {
 
 .footer p {
     height: 40px;
+    width: 200px;
     margin: 0;
     padding-top: 15px;
     color: mintcream;
@@ -244,4 +250,110 @@ textarea {
 .creator {
     text-decoration: none;
     color: lightgreen;
+}
+
+/* ********** Media Queries *********** */
+
+/* Devices with screens 1440px and smaller */
+@media (max-width: 1440px) {
+    h1 {
+        font-size: 4rem;
+    }
+
+    form {
+        top: 215px;
+    }
+}
+
+/* Devices with screens 1180px and smaller */
+@media (max-width: 1180px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    form {
+        top: 195px;
+    }
+}
+
+/* Devices with screens 940px and smaller */
+@media (max-width: 940px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    form {
+        position: static;
+        width: 100%;
+    }
+
+    form li {
+        width: calc(100% / 2);
+    }
+
+    .formBody {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .formButton {
+        margin-left: 40%;
+    }
+
+    .invList {
+        width: 100%;
+    }
+
+    .removeButton {
+        margin-left: 28%;
+    }
+
+    .footer {
+        height: 100px;
+    }
+
+    .footer i {
+        padding-top: 20px;
+    }
+}
+
+/* Devices with screens 700px and smaller */
+@media (max-width: 700px) {
+    h2 {
+        font-size: 1rem;
+    }
+
+    .formButton {
+        margin-left: 33%;
+    }
+
+    .removeButton {
+        margin-left: 22%;
+    }
+
+
+}
+
+/* Devices with screens 510px and smaller */
+@media (max-width: 510px) {
+    h2 {
+        font-size: 0.8rem;
+    }
+
+    .formButton {
+        margin-left: 28%;
+    }
+
+    .removeButton {
+        margin-left: 13%;
+    }
 }
