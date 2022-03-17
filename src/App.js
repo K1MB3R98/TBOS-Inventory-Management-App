@@ -4,6 +4,7 @@ import { getDatabase, ref, onValue, remove } from 'firebase/database';
 import './App.css'
 import Header from './Header.js';
 import AddItemForm from './AddForm.js';
+import Footer from './Footer.js';
 
 function App() {
   const [inventoryList, setInventoryList] = useState([]);
@@ -33,28 +34,41 @@ function App() {
 
   return (
     <div className='container'>
-      <div className="wrapper">
+      <div className='wrapper'>
         <Header />
-        {/* Display current inventory listing on screen */}
+        {/* Display current inventory list on screen */}
         <div className='invList'>
           <h3>Current Inventory</h3>
-          <ul>
+          <ul className='list'>
             {inventoryList.map( (item) => {
               return (
                 <li key={item.key}>
-                  <div className='smallDetails'>
-                    <p>Item: #{item.inventoryItem.itemId}</p>
-                    <p>Type: {item.inventoryItem.Type}</p>
-                    <p>Vol./Wt.: {item.inventoryItem.Volume}</p>
-                    <p>Quantity: {item.inventoryItem.Quantity}</p>
-                    <p>Price: ${item.inventoryItem.Price}</p>
-                  </div>
+                  <ul className='smallDetails'>
+                    <li>
+                      <h4>Type:</h4>
+                      <p>{item.inventoryItem.Type}</p>
+                    </li>
+                    <li>
+                      <h4>Vol./Wt.:</h4>
+                      <p>{item.inventoryItem.Volume}</p>
+                    </li>
+                    <li>
+                      <h4>Quantity:</h4>
+                      <p>{item.inventoryItem.Quantity}</p>
+                    </li>
+                    <li>
+                      <h4>Price:</h4>
+                      <p>${item.inventoryItem.Price}</p>
+                    </li>
+                  </ul>
                   <div className='largeDetails'>
-                    <p>Item Name: {item.inventoryItem.itemName}</p>
-                    <p>Description: {item.inventoryItem.Description}</p>
+                    <h4>Item Name: </h4>
+                    <p>{item.inventoryItem.itemName}</p>
+                    <h4>Description: </h4>
+                    <p>{item.inventoryItem.Description}</p>
                   </div>
-                  <button onClick={() => handleRemoveItem(item.key)}>Remove from Inventory</button>
-                  <hr></hr>
+                  <button className='removeButton' onClick={() => handleRemoveItem(item.key)}>Remove from Inventory</button>
+                  <hr />
                 </li>
               )
             })}
@@ -66,11 +80,11 @@ function App() {
           <AddItemForm />
         </div>
       </div>
-      {/* END: Wrapper */}
+      {/* END: wrapper */}
+      <Footer />
     </div>
-    // END: Container
+    // END: container
   )
 }
-
 
 export default App;
