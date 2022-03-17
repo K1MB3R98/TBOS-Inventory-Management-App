@@ -22,9 +22,6 @@ function AddItemForm() {
         if (id === "Description") {
             setDescription(value);
         }
-        if (id === "Frozen") {
-            setFrozen(value);
-        }
         if (id === "Volume") {
             setVolume(value);
         }
